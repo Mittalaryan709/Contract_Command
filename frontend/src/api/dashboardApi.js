@@ -32,12 +32,15 @@ export const getRecentContracts = () =>
 export const getRecentRequisitions = () =>
   api.get('/api/procurement/requisitions/', { params: { page_size: 5, ordering: '-created_at' } })
 
+export const getRecentPayments = () =>
+  api.get('/api/finance/payments/', { params: { page_size: 5, ordering: '-payment_date' } })
+
 export const getContractStatusDistribution = async () => {
   const statuses = ['Draft', 'Active', 'Expired', 'Terminated', 'Completed']
   const results = await Promise.all(
     statuses.map(s => api.get('/api/contracts/', { params: { page_size: 1, status: s } }))
   )
-  const extract = (r) => r.data?.data?.count ?? 0
+  const extract = (r) => r.data?.data?.count ?? r.data?.count ?? 0
   return statuses.reduce((acc, s, i) => ({ ...acc, [s]: extract(results[i]) }), {})
 }
 
@@ -46,6 +49,24 @@ export const getInvoiceStatusDistribution = async () => {
   const results = await Promise.all(
     statuses.map(s => api.get('/api/finance/invoices/', { params: { page_size: 1, status: s } }))
   )
-  const extract = (r) => r.data?.data?.count ?? 0
+  const extract = (r) => r.data?.data?.count ?? r.data?.count ?? 0
   return statuses.reduce((acc, s, i) => ({ ...acc, [s]: extract(results[i]) }), {})
+}
+
+export const getRequisitionPriorityDistribution = async () => {
+  const priorities = ['Urgent', 'High', 'Medium', 'Low']
+  const results = await Promise.all(
+    priorities.map(p => api.get('/api/procurement/requisitions/', { params: { page_size: 1, priority: p } }))
+  )
+  const extract = (r) => r.data?.data?.count ?? r.data?.count ?? 0
+  return priorities.reduce((acc, p, i) => ({ ...acc, [p]: extract(results[i]) }), {})
+}
+
+export const getPaymentMethodDistribution = async () => {
+  const methods = ['RTGS', 'NEFT', 'IMPS', 'Cheque', 'DD']
+  const results = await Promise.all(
+    methods.map(m => api.get('/api/finance/payments/', { params: { page_size: 1, payment_method: m } }))
+  )
+  const extract = (r) => r.data?.data?.count ?? r.data?.count ?? 0
+  return methods.reduce((acc, m, i) => ({ ...acc, [m]: extract(results[i]) }), {})
 }
