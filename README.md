@@ -171,12 +171,12 @@ npm run dev
 
 ## 5. Testing & Quality Assurance
 
-### Run Frontend Vitest Test Suite (77 Tests):
+### Run Frontend Vitest Test Suite (78 Tests):
 ```powershell
 cd E:\Contract_Command\frontend
 npm run test
 ```
-**Results:** `9 passed (9 test files) | 77 passed (77 tests) — 100% Pass Rate`
+**Results:** `9 passed (9 test files) | 78 passed (78 tests) — 100% Pass Rate`
 
 ### Run Frontend Static Code Analysis:
 ```powershell

@@ -7,10 +7,14 @@ import VendorComparePage from '../pages/vendors/VendorComparePage.jsx'
 import UnauthorizedPage from '../pages/errors/UnauthorizedPage.jsx'
 import NotFoundPage from '../pages/errors/NotFoundPage.jsx'
 
-// Mock vendorApi
-vi.mock('../api/vendorApi.js', () => ({
-  getVendors: vi.fn(),
-}))
+// Mock vendorApi with actual fallback
+vi.mock('../api/vendorApi.js', async () => {
+  const actual = await vi.importActual('../api/vendorApi.js')
+  return {
+    ...actual,
+    getVendors: vi.fn(),
+  }
+})
 
 import { getVendors } from '../api/vendorApi.js'
 
@@ -151,5 +155,27 @@ describe('Phase 9 — End-to-End System Integration & Role Security Suite', () =
     expect(screen.getByText(/Page Not Found/i)).toBeInTheDocument()
     expect(screen.getByText(/To Dashboard/i)).toBeInTheDocument()
     expect(screen.getByText(/Public Portal/i)).toBeInTheDocument()
+  })
+
+  // Test 5: Verify Module Service Layer Facades
+  it('exports all expected service methods from src/services/*', async () => {
+    const authSvc = await import('../services/authService.js')
+    const contractSvc = await import('../services/contractService.js')
+    const procureSvc = await import('../services/procurementService.js')
+    const vendorSvc = await import('../services/vendorService.js')
+    const financeSvc = await import('../services/financeService.js')
+    const dashSvc = await import('../services/dashboardService.js')
+
+    expect(typeof authSvc.login).toBe('function')
+    expect(typeof authSvc.getProfile).toBe('function')
+    expect(typeof contractSvc.getContracts).toBe('function')
+    expect(typeof contractSvc.createContract).toBe('function')
+    expect(typeof procureSvc.getPlans).toBe('function')
+    expect(typeof procureSvc.approveRequisition).toBe('function')
+    expect(typeof vendorSvc.getVendors).toBe('function')
+    expect(typeof vendorSvc.createEvaluation).toBe('function')
+    expect(typeof financeSvc.getInvoices).toBe('function')
+    expect(typeof financeSvc.createPayment).toBe('function')
+    expect(typeof dashSvc.getDashboardStats).toBe('function')
   })
 })
