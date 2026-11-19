@@ -1,0 +1,377 @@
+{
+  "info": {
+    "name": "ContractCommand (P07) REST API Collection",
+    "_postman_id": "c1f7b8a1-4e9b-4f9a-8c2d-9e1b2a3c4d5e",
+    "description": "Comprehensive Postman collection for ContractCommand - Defense Contract & Procurement Platform.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000/api",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "1. Login (Contracts Manager)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"rajesh_contracts\",\n  \"password\": \"HclTech@2024\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "2. Login (Safety Officer)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"priya_safety\",\n  \"password\": \"HclTech@2024\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "3. Token Refresh",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refreshToken}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/token/refresh/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "token", "refresh", ""]
+            }
+          }
+        },
+        {
+          "name": "4. Get Current Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/profile/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "profile", ""]
+            }
+          }
+        },
+        {
+          "name": "5. Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refreshToken}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contracts Module",
+      "item": [
+        {
+          "name": "List Contracts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contracts/?status=Active&ordering=-created_at",
+              "host": ["{{baseUrl}}"],
+              "path": ["contracts", ""],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "Active"
+                },
+                {
+                  "key": "ordering",
+                  "value": "-created_at"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Contract",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contract_number\": \"CC-2025-0001\",\n  \"title\": \"Light Combat Aircraft Canopy Replacement\",\n  \"contract_type\": \"Supply\",\n  \"vendor\": 1,\n  \"value\": \"45000000.00\",\n  \"start_date\": \"2025-01-01\",\n  \"end_date\": \"2025-12-31\",\n  \"status\": \"Draft\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contracts/",
+              "host": ["{{baseUrl}}"],
+              "path": ["contracts", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Contract Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contracts/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["contracts", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Procurement Module",
+      "item": [
+        {
+          "name": "List Procurement Plans",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/procurement/plans/",
+              "host": ["{{baseUrl}}"],
+              "path": ["procurement", "plans", ""]
+            }
+          }
+        },
+        {
+          "name": "List Requisitions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/procurement/requisitions/?priority=High",
+              "host": ["{{baseUrl}}"],
+              "path": ["procurement", "requisitions", ""],
+              "query": [
+                {
+                  "key": "priority",
+                  "value": "High"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Approve Requisition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/procurement/requisitions/1/approve/",
+              "host": ["{{baseUrl}}"],
+              "path": ["procurement", "requisitions", "1", "approve", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vendors Module",
+      "item": [
+        {
+          "name": "List Vendors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/vendors/?status=Active&category=Electronics",
+              "host": ["{{baseUrl}}"],
+              "path": ["vendors", ""],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "Active"
+                },
+                {
+                  "key": "category",
+                  "value": "Electronics"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Vendor Evaluation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vendor\": 1,\n  \"evaluation_date\": \"2024-11-15\",\n  \"quality_score\": \"9.0\",\n  \"delivery_score\": \"9.5\",\n  \"pricing_score\": \"8.5\",\n  \"compliance_score\": \"9.0\",\n  \"recommendation\": \"Selected\",\n  \"remarks\": \"Passed quarterly defense safety inspection.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/vendors/evaluations/",
+              "host": ["{{baseUrl}}"],
+              "path": ["vendors", "evaluations", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Finance Module",
+      "item": [
+        {
+          "name": "List Invoices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/finance/invoices/",
+              "host": ["{{baseUrl}}"],
+              "path": ["finance", "invoices", ""]
+            }
+          }
+        },
+        {
+          "name": "Record Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoice\": 1,\n  \"payment_reference\": \"PAY-RTGS-2025-001\",\n  \"payment_date\": \"2025-01-10\",\n  \"amount\": \"5000000.00\",\n  \"payment_method\": \"RTGS\",\n  \"status\": \"Completed\",\n  \"remarks\": \"Milestone cleared payment disbursement\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/finance/payments/",
+              "host": ["{{baseUrl}}"],
+              "path": ["finance", "payments", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

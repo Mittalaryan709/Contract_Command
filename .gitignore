@@ -1,0 +1,61 @@
+# =============================================
+# .gitignore — ContractCommand P07
+# =============================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# Environment & Secrets
+.env
+*.env
+!.env.example
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Database
+*.sql.bak
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Frontend (future)
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# IDE
+.idea/
+*.swp
+*.swo
