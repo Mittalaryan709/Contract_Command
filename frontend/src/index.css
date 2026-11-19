@@ -1,0 +1,10 @@
+@import './styles/theme.css';
+
+/* Custom Global Reset & Styles */
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
