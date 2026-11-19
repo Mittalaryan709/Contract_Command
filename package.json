@@ -1,8 +1,12 @@
 {
   "name": "contract-command",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
-    "build": "npm --prefix frontend run build"
+    "build": "node build.js"
   }
 }
