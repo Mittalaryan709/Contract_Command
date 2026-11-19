@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import PublicLayout from '../layouts/PublicLayout.jsx'
 import AppLayout from '../layouts/AppLayout.jsx'
 import ProtectedRoute from './ProtectedRoute.jsx'
+import RoleGuard from './RoleGuard.jsx'
 
 // Public pages
 import LandingPage from '../pages/public/LandingPage.jsx'
@@ -70,27 +71,31 @@ export default function AppRoutes() {
         <Route element={<AppLayout />}>
           <Route path="/app/dashboard" element={<DashboardPage />} />
           <Route path="/app/contracts" element={<ContractListPage />} />
-          <Route path="/app/contracts/new" element={<ContractCreatePage />} />
           <Route path="/app/contracts/:id" element={<ContractDetailPage />} />
-          <Route path="/app/contracts/:id/edit" element={<ContractEditPage />} />
           <Route path="/app/procurement/plans" element={<PlanListPage />} />
-          <Route path="/app/procurement/plans/new" element={<PlanCreatePage />} />
           <Route path="/app/procurement/plans/:id" element={<PlanDetailPage />} />
-          <Route path="/app/procurement/plans/:id/edit" element={<PlanEditPage />} />
           <Route path="/app/procurement/requisitions" element={<RequisitionListPage />} />
-          <Route path="/app/procurement/requisitions/new" element={<RequisitionCreatePage />} />
           <Route path="/app/procurement/requisitions/:id" element={<RequisitionDetailPage />} />
           <Route path="/app/vendors" element={<VendorListPage />} />
-          <Route path="/app/vendors/new" element={<VendorCreatePage />} />
           <Route path="/app/vendors/:id" element={<VendorDetailPage />} />
-          <Route path="/app/vendors/:id/edit" element={<VendorEditPage />} />
-          <Route path="/app/vendors/:id/evaluate" element={<VendorEvaluationPage />} />
           <Route path="/app/finance/invoices" element={<InvoiceListPage />} />
-          <Route path="/app/finance/invoices/new" element={<InvoiceCreatePage />} />
           <Route path="/app/finance/invoices/:id" element={<InvoiceDetailPage />} />
           <Route path="/app/finance/payments" element={<PaymentListPage />} />
-          <Route path="/app/finance/payments/new" element={<PaymentCreatePage />} />
           <Route path="/app/profile" element={<ProfilePage />} />
+
+          {/* Write / Privileged Management Routes */}
+          <Route element={<RoleGuard allowedRoles={['Administrator', 'Contracts Manager']} />}>
+            <Route path="/app/contracts/new" element={<ContractCreatePage />} />
+            <Route path="/app/contracts/:id/edit" element={<ContractEditPage />} />
+            <Route path="/app/procurement/plans/new" element={<PlanCreatePage />} />
+            <Route path="/app/procurement/plans/:id/edit" element={<PlanEditPage />} />
+            <Route path="/app/procurement/requisitions/new" element={<RequisitionCreatePage />} />
+            <Route path="/app/vendors/new" element={<VendorCreatePage />} />
+            <Route path="/app/vendors/:id/edit" element={<VendorEditPage />} />
+            <Route path="/app/vendors/:id/evaluate" element={<VendorEvaluationPage />} />
+            <Route path="/app/finance/invoices/new" element={<InvoiceCreatePage />} />
+            <Route path="/app/finance/payments/new" element={<PaymentCreatePage />} />
+          </Route>
         </Route>
       </Route>
 

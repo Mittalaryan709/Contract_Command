@@ -46,6 +46,17 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
+  const refreshUser = async () => {
+    try {
+      const profile = await getProfile()
+      const userData = profile.data?.data ?? profile.data
+      setUser(userData)
+      return userData
+    } catch {
+      // Ignore
+    }
+  }
+
   const getRole = () => user?.groups?.[0] ?? null
   const isAdmin = () => user?.groups?.includes('Administrator') ?? false
   const isContractsManager = () => user?.groups?.includes('Contracts Manager') ?? false
@@ -56,7 +67,7 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{
       user, loading, isAuthenticated: !!user,
-      login, logout, getRole, isAdmin, isContractsManager, isSafetyOfficer, canWrite, canDelete
+      login, logout, refreshUser, getRole, isAdmin, isContractsManager, isSafetyOfficer, canWrite, canDelete
     }}>
       {children}
     </AuthContext.Provider>
