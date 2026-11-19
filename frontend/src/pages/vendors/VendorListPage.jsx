@@ -106,12 +106,18 @@ export default function VendorListPage() {
           </p>
         </div>
 
-        {canWrite() && (
-          <Link to="/app/vendors/new" className="btn btn-navy d-flex align-items-center gap-2 shadow-sm">
-            <i className="bi bi-building-add text-warning"></i>
-            <span>Register New Vendor</span>
+        <div className="d-flex gap-2">
+          <Link to="/app/vendors/compare" className="btn btn-outline-secondary d-flex align-items-center gap-1 shadow-sm">
+            <i className="bi bi-bar-chart"></i>
+            <span>Compare Matrix</span>
           </Link>
-        )}
+          {canWrite() && (
+            <Link to="/app/vendors/new" className="btn btn-navy d-flex align-items-center gap-2 shadow-sm">
+              <i className="bi bi-building-add text-warning"></i>
+              <span>Register New Vendor</span>
+            </Link>
+          )}
+        </div>
       </div>
 
       {/* Metrics Banner */}

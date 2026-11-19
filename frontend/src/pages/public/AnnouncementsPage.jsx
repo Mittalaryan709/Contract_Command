@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function AnnouncementsPage() {
   const announcements = [
     {
@@ -39,26 +41,47 @@ export default function AnnouncementsPage() {
   ]
 
   return (
-    <div>
-      {/* Header Banner */}
-      <section className="py-5 text-white" style={{ backgroundColor: '#102A43', borderBottom: '3px solid #E58A24' }}>
+    <div style={{ backgroundColor: '#F3F5F7', minHeight: '100vh' }}>
+      {/* ====================================================================
+          DCMA AGENCY HEADER BANNER
+          ==================================================================== */}
+      <section className="py-5 text-white" style={{ backgroundColor: '#0B2239', borderBottom: '3px solid #FF9933' }}>
         <div className="container py-3">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2" style={{ backgroundColor: 'rgba(229, 138, 36, 0.2)', border: '1px solid #E58A24' }}>
-            <span className="small text-warning fw-semibold">Platform Bulletins &amp; Notices</span>
+          <nav aria-label="breadcrumb" className="mb-3">
+            <ol className="breadcrumb mb-0 small">
+              <li className="breadcrumb-item">
+                <Link to="/" className="text-white-50 text-decoration-none">
+                  <i className="bi bi-house-door-fill me-1"></i>Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item active text-warning" aria-current="page">Announcements &amp; Updates</li>
+            </ol>
+          </nav>
+
+          <div
+            className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-1 mb-2"
+            style={{ backgroundColor: 'rgba(255, 153, 51, 0.15)', border: '1px solid #FF9933' }}
+          >
+            <i className="bi bi-megaphone-fill text-warning"></i>
+            <span className="small text-warning fw-semibold font-monospace" style={{ fontSize: '0.78rem' }}>
+              OFFICIAL CIRCULARS &bull; BULLETINS &bull; POLICY DIRECTIVES
+            </span>
           </div>
           <h1 className="display-5 fw-bold text-white mb-2">Announcements &amp; Updates</h1>
-          <p className="lead text-white-50 mb-0 fs-6">
-            Official system notices, architecture milestones, and operational bulletins for ContractCommand.
+          <p className="lead text-white-50 mb-0 fs-6" style={{ maxWidth: '780px' }}>
+            Official system notices, architecture milestones, and operational bulletins for the ContractCommand procurement platform.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* ====================================================================
+          MAIN CONTENT
+          ==================================================================== */}
       <div className="container py-5">
         <div className="row g-4 justify-content-center">
-          <div className="col-lg-9">
+          <div className="col-lg-10">
             {/* Notice Alert */}
-            <div className="alert alert-info d-flex align-items-center gap-3 mb-4 shadow-sm" role="alert">
+            <div className="alert alert-info d-flex align-items-center gap-3 mb-4 shadow-sm rounded-2" role="alert" style={{ borderLeft: '4px solid #102F53' }}>
               <i className="bi bi-info-circle-fill fs-4 text-primary"></i>
               <div className="small mb-0">
                 <strong>Platform Notice:</strong> The bulletins listed below represent academic release milestones, architecture updates, and system governance notices for Project P07. They do not represent live Ministry of Defence press releases.
@@ -68,7 +91,11 @@ export default function AnnouncementsPage() {
             {/* Announcement Cards */}
             <div className="d-flex flex-column gap-4">
               {announcements.map((item) => (
-                <div key={item.id} className="card border-0 shadow-sm p-4 rounded-3 bg-white">
+                <div
+                  key={item.id}
+                  className="card border-0 shadow-sm p-4 rounded-2 bg-white"
+                  style={{ borderLeft: '4px solid #0B2239' }}
+                >
                   <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2 pb-2 border-bottom">
                     <div className="d-flex align-items-center gap-2">
                       <span className={`badge bg-${item.badgeColor}`}>{item.category}</span>
@@ -78,7 +105,7 @@ export default function AnnouncementsPage() {
                     <span className="badge bg-light text-dark border small">Audience: {item.audience}</span>
                   </div>
 
-                  <h5 className="fw-bold mb-2" style={{ color: '#102A43' }}>
+                  <h5 className="fw-bold mb-2" style={{ color: '#0B2239' }}>
                     {item.title}
                   </h5>
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -53,33 +54,57 @@ export default function ContactPage() {
   }
 
   return (
-    <div>
-      {/* Header Banner */}
-      <section className="py-5 text-white" style={{ backgroundColor: '#102A43', borderBottom: '3px solid #E58A24' }}>
+    <div style={{ backgroundColor: '#F3F5F7', minHeight: '100vh' }}>
+      {/* ====================================================================
+          DCMA AGENCY HEADER BANNER
+          ==================================================================== */}
+      <section className="py-5 text-white" style={{ backgroundColor: '#0B2239', borderBottom: '3px solid #FF9933' }}>
         <div className="container py-3">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2" style={{ backgroundColor: 'rgba(229, 138, 36, 0.2)', border: '1px solid #E58A24' }}>
-            <span className="small text-warning fw-semibold">Academic Inquiries &amp; Support</span>
+          <nav aria-label="breadcrumb" className="mb-3">
+            <ol className="breadcrumb mb-0 small">
+              <li className="breadcrumb-item">
+                <Link to="/" className="text-white-50 text-decoration-none">
+                  <i className="bi bi-house-door-fill me-1"></i>Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item active text-warning" aria-current="page">Contact &amp; Support</li>
+            </ol>
+          </nav>
+
+          <div
+            className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-1 mb-2"
+            style={{ backgroundColor: 'rgba(255, 153, 51, 0.15)', border: '1px solid #FF9933' }}
+          >
+            <i className="bi bi-envelope-check-fill text-warning"></i>
+            <span className="small text-warning fw-semibold font-monospace" style={{ fontSize: '0.78rem' }}>
+              AGENCY LIAISON &bull; ACADEMIC INQUIRIES &bull; SUPPORT
+            </span>
           </div>
           <h1 className="display-5 fw-bold text-white mb-2">Contact &amp; Support</h1>
-          <p className="lead text-white-50 mb-0 fs-6">
-            Get in touch regarding project demonstrations, technical architecture, and academic evaluation.
+          <p className="lead text-white-50 mb-0 fs-6" style={{ maxWidth: '780px' }}>
+            Get in touch regarding project demonstrations, technical architecture reviews, and academic evaluation for Project P07.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* ====================================================================
+          MAIN CONTENT
+          ==================================================================== */}
       <div className="container py-5">
         <div className="row g-5">
           {/* Left Column: Contact Form */}
           <div className="col-lg-7">
-            <div className="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white">
-              <h4 className="fw-bold mb-2" style={{ color: '#102A43' }}>Submit an Inquiry</h4>
+            <div className="card border-0 shadow-sm p-4 p-md-5 rounded-2 bg-white">
+              <div className="text-warning fw-bold text-uppercase small mb-1" style={{ letterSpacing: '1px' }}>
+                Direct Communication
+              </div>
+              <h4 className="fw-bold mb-2" style={{ color: '#0B2239' }}>Submit an Inquiry</h4>
               <p className="text-muted small mb-4">
-                Fill out the form below. Client-side form validation is enforced.
+                Fill out the form below to transmit an inquiry. Client-side validation ensures all required compliance details are present.
               </p>
 
               {submittedMessage && (
-                <div className="alert alert-success d-flex align-items-start gap-2 mb-4 shadow-sm" role="alert">
+                <div className="alert alert-success d-flex align-items-start gap-2 mb-4 shadow-sm rounded-2" role="alert">
                   <i className="bi bi-check-circle-fill text-success fs-5 mt-1"></i>
                   <div className="small">{submittedMessage}</div>
                 </div>
@@ -88,13 +113,13 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} noValidate>
                 {/* Full Name */}
                 <div className="mb-3">
-                  <label className="form-label fw-semibold small" style={{ color: '#334E68' }}>
+                  <label className="form-label fw-semibold small" style={{ color: '#0B2239' }}>
                     Full Name <span className="text-danger">*</span>
                   </label>
                   <input
                     type="text"
                     name="name"
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    className={`form-control rounded-1 ${errors.name ? 'is-invalid' : ''}`}
                     placeholder="e.g. Officer Vikram Singh"
                     value={form.name}
                     onChange={handleChange}
@@ -104,13 +129,13 @@ export default function ContactPage() {
 
                 {/* Email Address */}
                 <div className="mb-3">
-                  <label className="form-label fw-semibold small" style={{ color: '#334E68' }}>
+                  <label className="form-label fw-semibold small" style={{ color: '#0B2239' }}>
                     Email Address <span className="text-danger">*</span>
                   </label>
                   <input
                     type="email"
                     name="email"
-                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                    className={`form-control rounded-1 ${errors.email ? 'is-invalid' : ''}`}
                     placeholder="e.g. v.singh@example.ac.in"
                     value={form.email}
                     onChange={handleChange}
@@ -120,13 +145,13 @@ export default function ContactPage() {
 
                 {/* Subject */}
                 <div className="mb-3">
-                  <label className="form-label fw-semibold small" style={{ color: '#334E68' }}>
+                  <label className="form-label fw-semibold small" style={{ color: '#0B2239' }}>
                     Subject <span className="text-danger">*</span>
                   </label>
                   <input
                     type="text"
                     name="subject"
-                    className={`form-control ${errors.subject ? 'is-invalid' : ''}`}
+                    className={`form-control rounded-1 ${errors.subject ? 'is-invalid' : ''}`}
                     placeholder="e.g. Technical Query regarding Contract Lifecycle"
                     value={form.subject}
                     onChange={handleChange}
@@ -136,13 +161,13 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div className="mb-4">
-                  <label className="form-label fw-semibold small" style={{ color: '#334E68' }}>
+                  <label className="form-label fw-semibold small" style={{ color: '#0B2239' }}>
                     Message Content <span className="text-danger">*</span>
                   </label>
                   <textarea
                     name="message"
                     rows="4"
-                    className={`form-control ${errors.message ? 'is-invalid' : ''}`}
+                    className={`form-control rounded-1 ${errors.message ? 'is-invalid' : ''}`}
                     placeholder="Please describe your query or feedback in detail (min. 10 characters)..."
                     value={form.message}
                     onChange={handleChange}
@@ -153,9 +178,10 @@ export default function ContactPage() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="btn btn-saffron px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-sm"
+                  className="btn btn-navy px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-sm rounded-1 text-uppercase"
+                  style={{ letterSpacing: '0.5px' }}
                 >
-                  <i className="bi bi-send-fill"></i>
+                  <i className="bi bi-send-fill text-warning"></i>
                   <span>Validate &amp; Send Query</span>
                 </button>
               </form>
@@ -165,9 +191,9 @@ export default function ContactPage() {
           {/* Right Column: Contact Information */}
           <div className="col-lg-5">
             {/* Project Coordination Card */}
-            <div className="card border-0 shadow-sm p-4 rounded-4 mb-4" style={{ backgroundColor: '#0B1F33', color: '#fff' }}>
+            <div className="card border-0 shadow-sm p-4 rounded-2 mb-4" style={{ backgroundColor: '#0B2239', color: '#fff' }}>
               <div className="d-flex align-items-center gap-3 mb-3">
-                <div className="rounded-3 p-3 text-white" style={{ backgroundColor: '#102A43' }}>
+                <div className="rounded-1 p-3 text-white" style={{ backgroundColor: '#102F53' }}>
                   <i className="bi bi-mortarboard-fill fs-4 text-warning"></i>
                 </div>
                 <div>
@@ -204,21 +230,21 @@ export default function ContactPage() {
             </div>
 
             {/* Technical Resources Card */}
-            <div className="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
-              <h6 className="fw-bold mb-3" style={{ color: '#102A43' }}>Technical Repository &amp; Artifacts</h6>
+            <div className="card border-0 shadow-sm p-4 rounded-2 bg-white mb-4">
+              <h6 className="fw-bold mb-3" style={{ color: '#0B2239' }}>Technical Repository &amp; Artifacts</h6>
               <div className="d-flex flex-column gap-2 small">
-                <div className="p-3 rounded-2 bg-light d-flex align-items-center gap-3">
+                <div className="p-3 rounded bg-light d-flex align-items-center gap-3">
                   <i className="bi bi-github fs-4 text-dark"></i>
                   <div>
-                    <div className="fw-bold" style={{ color: '#102A43' }}>Source Repository</div>
+                    <div className="fw-bold" style={{ color: '#0B2239' }}>Source Repository</div>
                     <span className="text-muted">GitHub: Mittalaryan709/Contract_Command</span>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-2 bg-light d-flex align-items-center gap-3">
+                <div className="p-3 rounded bg-light d-flex align-items-center gap-3">
                   <i className="bi bi-file-earmark-code fs-4 text-primary"></i>
                   <div>
-                    <div className="fw-bold" style={{ color: '#102A43' }}>Swagger / OpenAPI Spec</div>
+                    <div className="fw-bold" style={{ color: '#0B2239' }}>Swagger / OpenAPI Spec</div>
                     <span className="text-muted">Endpoint: /api/docs/swagger/</span>
                   </div>
                 </div>
@@ -226,7 +252,7 @@ export default function ContactPage() {
             </div>
 
             {/* Academic Notice Box */}
-            <div className="p-3 rounded-3" style={{ backgroundColor: '#F3F6F9', border: '1px solid #DEE2E6' }}>
+            <div className="p-3 rounded-2" style={{ backgroundColor: '#F3F5F7', border: '1px solid #DEE2E6' }}>
               <div className="small text-muted">
                 <i className="bi bi-shield-exclamation me-1 text-warning"></i>
                 <strong>Notice:</strong> This form operates in client-side demonstration mode. For official evaluation questions, please present inquiries directly during designated academic viva and review sessions.

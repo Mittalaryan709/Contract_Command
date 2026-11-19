@@ -1,33 +1,78 @@
-# ContractCommand (P07) – Defense Contract and Procurement Management Platform
+# ContractCommand (P07) – Defence Contract and Procurement Management Platform
 
-**MCA 2nd Year HCLTech Companion Project**  
-**Domain:** Aerospace and Defense  
-**Project Code:** P07  
+**Project Code:** P07 – ContractCommand  
+**Academic Context:** MCA 2nd Year — HCLTech Career Shaper Capstone  
+**Institution:** ABES Engineering College  
+**Domain:** Aerospace and Defence Procurement  
+**Architecture:** Decoupled Full-Stack Platform (React 18 SPA Frontend + Django 4.2 REST Framework Backend)  
 
 ---
 
-## 1. Project Overview
+## 1. Project Overview & Problem Statement
 
-**ContractCommand** is an enterprise-grade backend platform engineered to centralize defense contracts, automate procurement workflows, evaluate defense contractors, and manage milestone disbursements with full audit compliance.
+**ContractCommand** is an enterprise-grade, defence-sector contract repository, procurement planning, contractor governance, and financial disbursement platform. Built to adhere strictly to the **Defence Procurement Procedure (DPP)** and **Defence Financial Regulations (DFR 2024)**, it centralizes military acquisitions, automates indent approvals, audits defence suppliers via 4-pillar benchmarks, and validates statutory 18% GST disbursements with full treasury traceability.
 
 ### Core Modules
-1. **Accounts & RBAC:** Multi-tier authentication using JWT, granular permissions across Administrator, Contracts Manager, and Safety Officer roles.
-2. **Contracts Management:** Lifecycle tracking (`Draft`, `Active`, `Expired`, `Terminated`, `Completed`), contract documents, and date constraint validation.
-3. **Procurement Planning:** Multi-year fiscal plans (`PLAN-YYYY-NN`), departmental requisitions, and approval workflows.
-4. **Vendor Governance:** Comprehensive vendor registration (GST, PAN, contact data) and 4-pillar performance evaluations (Quality, Delivery, Pricing, Compliance on a 0–10 scale).
-5. **Finance & Payment Processing:** Milestone invoices with 18% GST calculation, line items, and payment reconciliation (RTGS, NEFT).
+
+1. **Module 1: Defence Contracts Repository & Lifecycle**
+   - Central indent repository with strict `CC-YYYY-NNNN` contract identification.
+   - Five-stage lifecycle state engine (`Draft` &rarr; `Active` &rarr; `Expired` / `Terminated` / `Completed`).
+   - Attached audit files (security clearances, quality acceptance certificates, technical specifications).
+
+2. **Module 2: Procurement Planning & Field Requisitions**
+   - Annual Master Procurement Plans (`PLAN-YYYY-NN`) tracking fiscal expenditure ceilings.
+   - Field formation requisitions with dynamic line-item estimation and urgency prioritization (`Urgent`, `High`, `Medium`, `Low`).
+   - Two-stage committee approval/rejection workflows with mandatory audit remarks.
+
+3. **Module 3: Vendor Empanelment & 4-Pillar Evaluation**
+   - Supplier directory covering defence PSUs (HAL, BEL, BDL) and private aerospace manufacturers.
+   - Statutory Indian tax verification (15-character GSTIN, 10-character PAN).
+   - Multi-pillar vendor evaluation on a 0–10 scale:
+     - **Pillar 1:** Quality & Technical Reliability
+     - **Pillar 2:** Delivery & Schedule Adherence
+     - **Pillar 3:** Commercial & Pricing Competitiveness
+     - **Pillar 4:** Statutory & Security Compliance
+   - Side-by-side 3-way vendor comparison matrix benchmarking composite scores.
+
+4. **Module 4: Finance, Invoicing & Banking Disbursements**
+   - Contractor milestone claims with automated `INV-YYYY-NNNNN` numbering.
+   - Itemized milestone deliverables with real-time **18% Statutory GST** computation.
+   - Official treasury disbursement processing supporting RTGS (High Value), NEFT, IMPS, Cheques, and Demand Drafts.
+   - Real-time settlement progress tracking disbursed amounts against outstanding milestone liabilities.
+
+5. **Module 5: Strategic Command Dashboard & Analytics**
+   - Executive situational awareness banner with RESTRICTED security classification.
+   - Eight real-time KPI metric cards tracking contracts, pipeline, suppliers, and disbursements.
+   - Interactive Chart.js visual analytics:
+     - Contract Lifecycle Status Distribution (Doughnut Chart)
+     - Treasury Banking Modes Breakdown (Bar Chart)
+     - Requisition Urgency Index (Bar Chart)
+   - Live operational streams of recent contracts, pending indents, and cleared disbursements.
+
+6. **Public Website & Defence Identity**
+   - Professional Indian defence-themed portal inspired by DCMA and the Ministry of Defence.
+   - Public Landing Page, About, Modules Showcase, Defence Announcements, and Contact Directory.
 
 ---
 
 ## 2. Technology Stack
 
-- **Language:** Python 3.11+
-- **Framework:** Django 4.2 LTS & Django REST Framework (DRF)
-- **Database:** MySQL 8.0 (InnoDB, utf8mb4, 3NF Normalized)
-- **Authentication:** `djangorestframework-simplejwt` (JWT Access & Refresh tokens)
-- **Testing:** `pytest` and `pytest-django` (28 Automated Unit & API Tests)
+### Frontend Application
+- **Core Framework:** React 18.3.1 (Single Page Application)
+- **Build System:** Vite 6.0+ (ESBuild / Rollup)
+- **Routing:** React Router DOM v6.28.0 with `ProtectedRoute` & `RoleGuard`
+- **HTTP Client:** Axios v1.7.9 (Centralized instance with JWT refresh token interceptor)
+- **UI Framework:** Bootstrap 5.3.3 & Bootstrap Icons 1.11.3
+- **Visual Analytics:** Chart.js 4.4.7 & React-Chartjs-2
+- **Testing Harness:** Vitest 5.1.1, React Testing Library, JSDOM (77 Tests Passing across 9 Suites)
+- **Static Code Analysis:** Oxlint 0.15.0 (0 Errors)
+
+### Backend Service
+- **Framework:** Python 3.11+ / Django 4.2 LTS & Django REST Framework (DRF 3.14)
+- **Database:** MySQL 8.0 / SQLite (InnoDB, utf8mb4, 3NF Normalized)
+- **Authentication:** `djangorestframework-simplejwt` (JWT Access & Refresh Tokens)
 - **API Documentation:** `drf-spectacular` (OpenAPI 3.0 / Swagger UI / ReDoc)
-- **Cross-Origin Handling:** `django-cors-headers` (Configured for future React frontend)
+- **Testing:** `pytest` & `pytest-django` (28 Automated Tests Passing)
 
 ---
 
@@ -36,7 +81,7 @@
 ```text
 ContractCommand/
 │
-├── backend/
+├── backend/                  # Existing Django REST Framework backend
 │   ├── config/              # Django settings, root URLs, WSGI/ASGI
 │   ├── accounts/            # User profile, JWT auth, groups & roles
 │   ├── contracts/           # Contracts, documents, lifecycle tracking
@@ -45,127 +90,143 @@ ContractCommand/
 │   ├── finance/             # Invoices, invoice items, payment records
 │   ├── common/              # Custom permissions, pagination, validators
 │   ├── tests/               # Pytest test suite (28 test cases)
-│   ├── pytest.ini           # Pytest configuration
 │   ├── requirements.txt     # Python dependencies
 │   └── manage.py            # Django CLI utility
 │
-├── database/
-│   ├── schema.sql           # MySQL 8.0 DDL schema (3NF, Foreign Keys)
-│   ├── seed_data.sql        # Realistic Indian defense sample dataset
-│   ├── ER_Diagram.png       # Entity Relationship diagram (PNG)
-│   └── ER_Diagram.svg       # Entity Relationship diagram (SVG)
+├── frontend/                 # React 18 + Vite 6 Single Page Application
+│   ├── public/              # Static assets, favicon, SVGs
+│   ├── src/
+│   │   ├── api/             # Axios API services (contracts, finance, vendors, etc.)
+│   │   ├── assets/          # Defence branding logos & imagery
+│   │   ├── components/      # Common UI components (Navbar, Topbar, Sidebar, Badges)
+│   │   ├── context/         # AuthContext (JWT tokens, role helpers)
+│   │   ├── hooks/           # useAuth, useDebounce, useFetch
+│   │   ├── layouts/         # PublicLayout, AppLayout
+│   │   ├── pages/           # Public, Auth, Dashboard, Contracts, Procurement, Vendors, Finance
+│   │   ├── routes/          # AppRoutes, ProtectedRoute, RoleGuard
+│   │   ├── test/            # Vitest unit & integration test suites (77 tests)
+│   │   └── utils/           # Formatters (INR ₹, Indian dates) & role helpers
+│   ├── package.json
+│   ├── vite.config.js
+│   └── .env
 │
-├── docs/
-│   ├── requirements/        # Requirements specification summary
-│   ├── wireframes/          # Frontend API integration contract
-│   ├── api/                 # Postman Collection JSON
-│   └── test-report/         # Pytest execution log & test cases
+├── database/                 # MySQL 8.0 schema DDL & realistic seed dataset
+│   ├── schema.sql
+│   ├── seed_data.sql
+│   ├── ER_Diagram.png
+│   └── ER_Diagram.svg
 │
-├── frontend/                # (Empty - Reserved for React Frontend Phase)
-├── README.md                # Project documentation
-├── .env.example             # Template for environment variables
-└── .gitignore               # Ignored files and directories
+├── docs/                     # Comprehensive System Documentation
+│   ├── frontend-setup-guide.md       # Step-by-step setup and local execution guide
+│   ├── frontend-user-guide.md        # Complete operational manual for officers
+│   ├── frontend-architecture.md      # Architecture, security guards, and design system
+│   ├── frontend-testing-report.md    # Phase 9 test execution logs and verification results
+│   ├── frontend-api-integration.md   # Complete REST API contracts and endpoints
+│   ├── frontend-development-plan.md  # 10-phase development roadmap and tracking
+│   ├── requirements/                 # MCA project specifications
+│   ├── api/                          # Postman collection
+│   └── test-report/                  # Backend pytest execution log
+│
+├── README.md                 # Master project documentation
+└── .gitignore
 ```
 
 ---
 
-## 4. Setup and Installation Guide
+## 4. Quick Start & Execution Guide
 
 ### Prerequisites
-- Python 3.11 or higher
-- MySQL Server 8.0
+- Node.js v18+ or v20+ & npm v9+
+- Python 3.10+ & MySQL Server 8.0 (or SQLite)
 - Git
 
-### Step 1: Clone Repository & Create Virtual Environment
+---
+
+### Step 1: Start the Backend Service
+In a dedicated PowerShell terminal:
 ```powershell
 cd E:\Contract_Command\backend
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-```
-
-### Step 2: Install Python Packages
-```powershell
 pip install -r requirements.txt
-```
-
-### Step 3: Configure Environment Variables
-Copy `.env.example` to `.env` in the root folder:
-```powershell
-Copy-Item ..\.env.example ..\.env
-```
-Edit `.env` to supply your MySQL database credentials:
-```ini
-SECRET_KEY=cc-p07-django-secret-key-change-in-production-2024xyz
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-DB_NAME=contractcommand_db
-DB_USER=contractcommand_user
-DB_PASSWORD=SecurePass@2024
-DB_HOST=localhost
-DB_PORT=3306
-
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
-```
-
-### Step 4: Setup Database & Run Migrations
-In MySQL:
-```sql
-CREATE DATABASE contractcommand_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-Apply migrations:
-```powershell
 python manage.py migrate
-```
-
-### Step 5: Seed Default Roles & Sample Data
-```powershell
-# Create default groups (Administrator, Contracts Manager, Safety Officer)
 python manage.py setup_roles
-
-# Seed realistic Indian defense dataset (100+ records)
 python manage.py seed_data
+python manage.py runserver 127.0.0.1:8000
 ```
+*Backend API will be running at `http://127.0.0.1:8000/`.*
 
-### Step 6: Start Development Server
+---
+
+### Step 2: Start the Frontend Application
+In a separate PowerShell terminal:
 ```powershell
-python manage.py runserver
+cd E:\Contract_Command\frontend
+npm install
+npm run dev
 ```
-Backend API will be accessible at `http://127.0.0.1:8000/`.
+*Frontend application will be accessible at `http://localhost:5173/`.*
 
 ---
 
-## 5. Seeded User Credentials (For Testing)
+## 5. Testing & Quality Assurance
 
-| Role | Username | Password | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Administrator** | `admin_user` | `HclTech@2024` | System administrator with full access |
-| **Contracts Manager** | `rajesh_contracts` | `HclTech@2024` | Creates contracts, approves requisitions |
-| **Safety Officer** | `priya_safety` | `HclTech@2024` | Inspects vendors & records evaluations |
+### Run Frontend Vitest Test Suite (77 Tests):
+```powershell
+cd E:\Contract_Command\frontend
+npm run test
+```
+**Results:** `9 passed (9 test files) | 77 passed (77 tests) — 100% Pass Rate`
 
----
+### Run Frontend Static Code Analysis:
+```powershell
+cd E:\Contract_Command\frontend
+npm run lint
+```
+**Results:** `0 Errors`
 
-## 6. API Documentation & Interactive Endpoints
+### Run Frontend Production Build:
+```powershell
+cd E:\Contract_Command\frontend
+npm run build
+```
+**Results:** `✓ built in ~2.5s (Assets emitted to dist/)`
 
-With the server running, navigate to:
-- **Swagger UI:** `http://127.0.0.1:8000/api/docs/swagger/`
-- **ReDoc:** `http://127.0.0.1:8000/api/docs/redoc/`
-- **OpenAPI Schema (JSON):** `http://127.0.0.1:8000/api/schema/`
-- **Postman Collection:** Located at `docs/api/postman_collection.json`
-
----
-
-## 7. Running Automated Tests
-
-Run the test suite with verbose output:
+### Run Backend Pytest Suite (28 Tests):
 ```powershell
 cd E:\Contract_Command\backend
 pytest -v
 ```
+**Results:** `28 passed in 29.10s — 100% Pass Rate`
 
-**Result:**
-```text
-============================= 28 passed in 29.10s =============================
-```
-Complete test execution details are documented in `docs/test-report/test_report.md`.
+---
+
+## 6. Default User Accounts (For Testing & Review)
+
+| Role | Username | Password | Access Level & Permissions |
+| :--- | :--- | :--- | :--- |
+| **Administrator** | `admin_user` | `HclTech@2024` | Unrestricted CRUD, delete authorization, master plans, requisition approval. |
+| **Contracts Manager** | `rajesh_contracts` | `HclTech@2024` | Contract drafting, requisition approval, invoice creation, vendor evaluation. |
+| **Safety Officer** | `priya_safety` | `HclTech@2024` | Read-only inspection of contract dossiers, vendor scores, and compliance vouchers. |
+
+---
+
+## 7. Interactive API Documentation
+
+With the backend running, explore the interactive documentation:
+- **Swagger UI:** `http://127.0.0.1:8000/api/docs/swagger/`
+- **ReDoc:** `http://127.0.0.1:8000/api/docs/redoc/`
+- **OpenAPI Schema (JSON):** `http://127.0.0.1:8000/api/schema/`
+- **Postman Collection:** `docs/api/postman_collection.json`
+
+---
+
+## 8. Project Documentation Directory
+
+Detailed technical and operational manuals are available under `docs/`:
+- [Frontend Setup Guide](docs/frontend-setup-guide.md): Environment variables, dependencies, and deployment.
+- [Frontend User Guide](docs/frontend-user-guide.md): Operational instructions for all 4 modules.
+- [Frontend Architecture](docs/frontend-architecture.md): Component hierarchy, JWT interceptor, RBAC design.
+- [Frontend Testing Report](docs/frontend-testing-report.md): Vitest logs, coverage, and verification.
+- [Frontend API Integration](docs/frontend-api-integration.md): REST endpoint contracts and payloads.
+- [Frontend Development Plan](docs/frontend-development-plan.md): 10-phase milestone execution log.

@@ -382,9 +382,9 @@ For production, add the deployed frontend URL to `CORS_ALLOWED_ORIGINS` in the b
 
 | Module         | Endpoints | Auth Method | Pagination | Filters | Search | Status  |
 |----------------|-----------|-------------|-----------|---------|--------|---------|
-| Auth           | 7         | JWT Bearer  | No        | No      | No     | ✅ Ready |
-| Contracts      | 10        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready |
-| Procurement    | 15        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready |
-| Vendors        | 10        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready |
-| Finance        | 12        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready |
-| Dashboard      | —         | —           | —         | —       | —      | ⚠️ Derived from list APIs |
+| Auth           | 7         | JWT Bearer  | No        | No      | No     | ✅ Ready & Verified |
+| Contracts      | 10        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready & Verified |
+| Procurement    | 15        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready & Verified |
+| Vendors        | 10        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready & Verified |
+| Finance        | 12        | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Ready & Verified |
+| Dashboard      | 8         | JWT Bearer  | Yes       | Yes     | Yes    | ✅ Fully Integrated (Derived KPIs & Distribution Charts) |

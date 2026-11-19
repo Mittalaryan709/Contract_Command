@@ -158,8 +158,8 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demonstration Quick-Fill Pills */}
-          <div className="mt-4 pt-3 border-top">
+          {/* Quick Access Roles (Visually Hidden) */}
+          <div className="visually-hidden">
             <div className="d-flex justify-content-between align-items-center mb-2">
               <span className="text-muted small fw-semibold" style={{ fontSize: '0.75rem' }}>QUICK TEST ROLES:</span>
               <span className="text-muted" style={{ fontSize: '0.7rem' }}>Click to fill</span>

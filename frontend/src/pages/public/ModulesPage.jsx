@@ -2,38 +2,59 @@ import { Link } from 'react-router-dom'
 
 export default function ModulesPage() {
   return (
-    <div>
-      {/* Header Banner */}
-      <section className="py-5 text-white" style={{ backgroundColor: '#102A43', borderBottom: '3px solid #E58A24' }}>
+    <div style={{ backgroundColor: '#F3F5F7', minHeight: '100vh' }}>
+      {/* ====================================================================
+          DCMA AGENCY HEADER BANNER
+          ==================================================================== */}
+      <section className="py-5 text-white" style={{ backgroundColor: '#0B2239', borderBottom: '3px solid #FF9933' }}>
         <div className="container py-3">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2" style={{ backgroundColor: 'rgba(229, 138, 36, 0.2)', border: '1px solid #E58A24' }}>
-            <span className="small text-warning fw-semibold">Modular Enterprise Architecture</span>
+          <nav aria-label="breadcrumb" className="mb-3">
+            <ol className="breadcrumb mb-0 small">
+              <li className="breadcrumb-item">
+                <Link to="/" className="text-white-50 text-decoration-none">
+                  <i className="bi bi-house-door-fill me-1"></i>Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item active text-warning" aria-current="page">Platform Modules</li>
+            </ol>
+          </nav>
+
+          <div
+            className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-1 mb-2"
+            style={{ backgroundColor: 'rgba(255, 153, 51, 0.15)', border: '1px solid #FF9933' }}
+          >
+            <i className="bi bi-grid-3x3-gap-fill text-warning"></i>
+            <span className="small text-warning fw-semibold font-monospace" style={{ fontSize: '0.78rem' }}>
+              MODULAR ENTERPRISE ARCHITECTURE &bull; 4 CORE SYSTEMS
+            </span>
           </div>
           <h1 className="display-5 fw-bold text-white mb-2">Platform Modules</h1>
-          <p className="lead text-white-50 mb-0 fs-6">
-            Detailed overview of the four core operational modules powering ContractCommand.
+          <p className="lead text-white-50 mb-0 fs-6" style={{ maxWidth: '780px' }}>
+            Detailed operational guide to the four core synchronized acquisition modules powering the ContractCommand defence procurement platform.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* ====================================================================
+          MAIN CONTENT
+          ==================================================================== */}
       <div className="container py-5">
         <div className="row g-5">
 
           {/* Module 1: Contract Repository */}
           <div className="col-12" id="contracts">
-            <div className="p-4 p-md-5 rounded-4 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#102A43' }}>
+            <div className="p-4 p-md-5 rounded-2 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#0B2239' }}>
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
                 <div className="d-flex align-items-center gap-3">
-                  <div className="rounded-3 p-3 text-white" style={{ backgroundColor: '#102A43' }}>
+                  <div className="rounded-1 p-3 text-white" style={{ backgroundColor: '#0B2239' }}>
                     <i className="bi bi-file-earmark-text fs-3"></i>
                   </div>
                   <div>
                     <span className="badge bg-secondary mb-1">Module 01</span>
-                    <h3 className="fw-bold mb-0" style={{ color: '#102A43' }}>Contract Repository &amp; Lifecycle</h3>
+                    <h3 className="fw-bold mb-0" style={{ color: '#0B2239' }}>Contract Repository &amp; Lifecycle</h3>
                   </div>
                 </div>
-                <Link to="/login" className="btn btn-outline-dark btn-sm px-3 py-2 d-inline-flex align-items-center gap-2">
+                <Link to="/login" className="btn btn-navy btn-sm px-3 py-2 d-inline-flex align-items-center gap-2 rounded-1">
                   <span>Sign in to access contracts</span>
                   <i className="bi bi-arrow-right"></i>
                 </Link>
@@ -41,12 +62,12 @@ export default function ModulesPage() {
 
               <div className="row g-4">
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Core Objectives</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Core Objectives</h6>
                   <p className="text-muted small lh-base">
                     The Contract Repository module provides end-to-end visibility and lifecycle governance over defence contracts. Each agreement is tracked with standard numbering (CC-YYYY-NNNN), verified supplier linkage, and comprehensive financial valuation in Indian Rupees (₹).
                   </p>
 
-                  <h6 className="fw-bold mt-3" style={{ color: '#102A43' }}>Contract Status Workflow</h6>
+                  <h6 className="fw-bold mt-3" style={{ color: '#0B2239' }}>Contract Status Workflow</h6>
                   <div className="d-flex flex-wrap gap-2 mt-2">
                     <span className="badge bg-secondary">Draft</span>
                     <i className="bi bi-arrow-right text-muted small align-self-center"></i>
@@ -59,7 +80,7 @@ export default function ModulesPage() {
                 </div>
 
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Key Capabilities</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Key Capabilities</h6>
                   <ul className="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
                     <li className="d-flex gap-2">
                       <i className="bi bi-check-circle-fill text-success"></i>
@@ -85,18 +106,18 @@ export default function ModulesPage() {
 
           {/* Module 2: Procurement Planning */}
           <div className="col-12" id="procurement">
-            <div className="p-4 p-md-5 rounded-4 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#334E68' }}>
+            <div className="p-4 p-md-5 rounded-2 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#102F53' }}>
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
                 <div className="d-flex align-items-center gap-3">
-                  <div className="rounded-3 p-3 text-white" style={{ backgroundColor: '#334E68' }}>
+                  <div className="rounded-1 p-3 text-white" style={{ backgroundColor: '#102F53' }}>
                     <i className="bi bi-clipboard-check fs-3"></i>
                   </div>
                   <div>
                     <span className="badge bg-secondary mb-1">Module 02</span>
-                    <h3 className="fw-bold mb-0" style={{ color: '#102A43' }}>Procurement Planning &amp; Requisitions</h3>
+                    <h3 className="fw-bold mb-0" style={{ color: '#0B2239' }}>Procurement Planning &amp; Requisitions</h3>
                   </div>
                 </div>
-                <Link to="/login" className="btn btn-outline-dark btn-sm px-3 py-2 d-inline-flex align-items-center gap-2">
+                <Link to="/login" className="btn btn-navy btn-sm px-3 py-2 d-inline-flex align-items-center gap-2 rounded-1">
                   <span>Sign in to manage requisitions</span>
                   <i className="bi bi-arrow-right"></i>
                 </Link>
@@ -104,12 +125,12 @@ export default function ModulesPage() {
 
               <div className="row g-4">
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Core Objectives</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Core Objectives</h6>
                   <p className="text-muted small lh-base">
                     Organize defence equipment procurement around annual fiscal plans. Stakeholders submit line-item requisitions detailing quantity, unit prices, and required delivery deadlines, feeding into multi-tier approval gates.
                   </p>
 
-                  <h6 className="fw-bold mt-3" style={{ color: '#102A43' }}>Priority Levels</h6>
+                  <h6 className="fw-bold mt-3" style={{ color: '#0B2239' }}>Priority Levels</h6>
                   <div className="d-flex flex-wrap gap-2 mt-2">
                     <span className="badge bg-secondary">Low</span>
                     <span className="badge bg-info text-dark">Medium</span>
@@ -119,7 +140,7 @@ export default function ModulesPage() {
                 </div>
 
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Key Capabilities</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Key Capabilities</h6>
                   <ul className="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
                     <li className="d-flex gap-2">
                       <i className="bi bi-check-circle-fill text-success"></i>
@@ -145,18 +166,18 @@ export default function ModulesPage() {
 
           {/* Module 3: Vendor Management */}
           <div className="col-12" id="vendors">
-            <div className="p-4 p-md-5 rounded-4 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#287A4B' }}>
+            <div className="p-4 p-md-5 rounded-2 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#138808' }}>
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
                 <div className="d-flex align-items-center gap-3">
-                  <div className="rounded-3 p-3 text-white" style={{ backgroundColor: '#287A4B' }}>
+                  <div className="rounded-1 p-3 text-white" style={{ backgroundColor: '#138808' }}>
                     <i className="bi bi-building-check fs-3"></i>
                   </div>
                   <div>
                     <span className="badge bg-secondary mb-1">Module 03</span>
-                    <h3 className="fw-bold mb-0" style={{ color: '#102A43' }}>Vendor Evaluation &amp; Selection</h3>
+                    <h3 className="fw-bold mb-0" style={{ color: '#0B2239' }}>Vendor Evaluation &amp; Selection</h3>
                   </div>
                 </div>
-                <Link to="/login" className="btn btn-outline-dark btn-sm px-3 py-2 d-inline-flex align-items-center gap-2">
+                <Link to="/login" className="btn btn-navy btn-sm px-3 py-2 d-inline-flex align-items-center gap-2 rounded-1">
                   <span>Sign in to view vendors</span>
                   <i className="bi bi-arrow-right"></i>
                 </Link>
@@ -164,12 +185,12 @@ export default function ModulesPage() {
 
               <div className="row g-4">
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Core Objectives</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Core Objectives</h6>
                   <p className="text-muted small lh-base">
                     Maintains the master repository of approved defence contractors, MSMEs, DPSUs, and private manufacturers. Includes statutory tax identity compliance (GSTIN, PAN) and rigorous objective evaluation scoring.
                   </p>
 
-                  <h6 className="fw-bold mt-3" style={{ color: '#102A43' }}>4-Pillar Evaluation Framework</h6>
+                  <h6 className="fw-bold mt-3" style={{ color: '#0B2239' }}>4-Pillar Evaluation Framework</h6>
                   <div className="row g-2 mt-1">
                     <div className="col-6"><span className="badge bg-light text-dark border w-100 py-2">Quality Score (0&ndash;10)</span></div>
                     <div className="col-6"><span className="badge bg-light text-dark border w-100 py-2">Delivery Score (0&ndash;10)</span></div>
@@ -179,7 +200,7 @@ export default function ModulesPage() {
                 </div>
 
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Key Capabilities</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Key Capabilities</h6>
                   <ul className="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
                     <li className="d-flex gap-2">
                       <i className="bi bi-check-circle-fill text-success"></i>
@@ -205,18 +226,18 @@ export default function ModulesPage() {
 
           {/* Module 4: Finance Management */}
           <div className="col-12" id="finance">
-            <div className="p-4 p-md-5 rounded-4 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#E58A24' }}>
+            <div className="p-4 p-md-5 rounded-2 bg-white shadow-sm border-start border-5" style={{ borderLeftColor: '#FF9933' }}>
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
                 <div className="d-flex align-items-center gap-3">
-                  <div className="rounded-3 p-3 text-white" style={{ backgroundColor: '#E58A24' }}>
+                  <div className="rounded-1 p-3 text-white" style={{ backgroundColor: '#FF9933' }}>
                     <i className="bi bi-cash-stack fs-3"></i>
                   </div>
                   <div>
                     <span className="badge bg-secondary mb-1">Module 04</span>
-                    <h3 className="fw-bold mb-0" style={{ color: '#102A43' }}>Invoice &amp; Payment Processing</h3>
+                    <h3 className="fw-bold mb-0" style={{ color: '#0B2239' }}>Invoice &amp; Payment Processing</h3>
                   </div>
                 </div>
-                <Link to="/login" className="btn btn-outline-dark btn-sm px-3 py-2 d-inline-flex align-items-center gap-2">
+                <Link to="/login" className="btn btn-navy btn-sm px-3 py-2 d-inline-flex align-items-center gap-2 rounded-1">
                   <span>Sign in to view finance</span>
                   <i className="bi bi-arrow-right"></i>
                 </Link>
@@ -224,12 +245,12 @@ export default function ModulesPage() {
 
               <div className="row g-4">
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Core Objectives</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Core Objectives</h6>
                   <p className="text-muted small lh-base">
                     Ensures strict fiscal accountability for defence disbursements. Invoices are linked to contracts, verified with line items, taxed at 18% GST, and balanced against recorded NEFT, RTGS, or IMPS settlement references.
                   </p>
 
-                  <h6 className="fw-bold mt-3" style={{ color: '#102A43' }}>Supported Payment Methods</h6>
+                  <h6 className="fw-bold mt-3" style={{ color: '#0B2239' }}>Supported Payment Methods</h6>
                   <div className="d-flex flex-wrap gap-2 mt-2">
                     <span className="badge bg-dark">NEFT</span>
                     <span className="badge bg-dark">RTGS</span>
@@ -240,7 +261,7 @@ export default function ModulesPage() {
                 </div>
 
                 <div className="col-lg-6">
-                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Key Capabilities</h6>
+                  <h6 className="fw-bold" style={{ color: '#0B2239' }}>Key Capabilities</h6>
                   <ul className="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
                     <li className="d-flex gap-2">
                       <i className="bi bi-check-circle-fill text-success"></i>

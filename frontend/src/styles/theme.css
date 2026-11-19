@@ -1,15 +1,17 @@
-/* ContractCommand Theme Variables & Utility Classes */
+/* ContractCommand Theme Variables & DCMA-Inspired Visual Styling */
 :root {
-  --navy: #102A43;
-  --deep-navy: #0B1F33;
-  --steel-blue: #334E68;
+  --deep-navy: #0B2239;
+  --primary-navy: #102F53;
+  --secondary-navy: #173B63;
+  --navy: #102F53;
   --white: #FFFFFF;
-  --light-grey: #F3F6F9;
-  --saffron: #E58A24;
-  --green: #287A4B;
-  --red: #C0392B;
+  --light-grey: #F3F5F7;
+  --text-grey: #5E6874;
   --text-dark: #1A2B3C;
-  --text-muted: #627D98;
+  --text-muted: #5E6874;
+  --saffron: #FF9933;
+  --green: #138808;
+  --red: #C0392B;
   --border-color: #E2E8F0;
 }
 
@@ -21,7 +23,388 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Sidebar */
+/* ==========================================================================
+   DCMA-INSPIRED HEADER & NAVIGATION STYLES
+   ========================================================================== */
+
+/* Top Slim Information Bar */
+.dcma-top-bar {
+  background-color: var(--deep-navy);
+  color: #B0C4DE;
+  font-size: 0.76rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dcma-top-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Main Agency Header */
+.dcma-header {
+  background-color: var(--primary-navy);
+  color: #fff;
+  border-bottom: 3px solid var(--secondary-navy);
+}
+
+/* Horizontal Navigation Bar */
+.dcma-navbar {
+  background-color: var(--primary-navy);
+  padding: 0;
+}
+
+/* Navigation Tabs */
+.dcma-nav-tab {
+  color: #E2E8F0 !important;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 18px 16px !important;
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dcma-nav-tab:hover,
+.dcma-nav-tab.active,
+.dcma-nav-item:hover > .dcma-nav-tab {
+  color: #FFFFFF !important;
+  background-color: var(--secondary-navy);
+  border-bottom-color: var(--saffron);
+}
+
+.dcma-chevron {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.dcma-nav-item:hover .dcma-chevron {
+  transform: rotate(180deg);
+}
+
+/* DCMA Desktop Dropdown Menus */
+.dcma-nav-item {
+  position: relative;
+}
+
+.dcma-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  background-color: var(--deep-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--saffron);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 1050;
+  display: none;
+  animation: dcmaFadeSlide 0.2s ease-in-out forwards;
+}
+
+@keyframes dcmaFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dcma-nav-item:hover > .dcma-dropdown-menu,
+.dcma-nav-item:focus-within > .dcma-dropdown-menu {
+  display: block;
+}
+
+.dcma-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  color: #CBD5E1;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  border-left: 3px solid transparent;
+}
+
+.dcma-dropdown-link:hover {
+  color: #FFFFFF;
+  background-color: var(--secondary-navy);
+  border-left-color: var(--saffron);
+  padding-left: 22px;
+}
+
+.dcma-dropdown-link i {
+  color: var(--saffron);
+  font-size: 0.9rem;
+}
+
+/* Search Icon & Search Overlay */
+.dcma-search-btn {
+  background: transparent;
+  border: none;
+  color: #E2E8F0;
+  padding: 18px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.dcma-search-btn:hover {
+  color: #FFFFFF;
+  background-color: var(--secondary-navy);
+}
+
+.dcma-search-overlay {
+  background-color: var(--deep-navy);
+  border-bottom: 3px solid var(--saffron);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  padding: 16px 0;
+  animation: dcmaFadeSlide 0.2s ease;
+}
+
+/* Mobile Navigation Accordion */
+@media (max-width: 991.98px) {
+  .dcma-navbar-collapse {
+    background-color: var(--deep-navy);
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dcma-nav-tab {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .dcma-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background-color: rgba(0,0,0,0.2);
+    border-left: 2px solid var(--saffron);
+    margin: 4px 0 8px 14px;
+    border-radius: 4px;
+  }
+  .dcma-dropdown-menu.mobile-open {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   HOMEPAGE & SECTIONS (DCMA-STYLE)
+   ========================================================================== */
+
+/* Hero Banner */
+.dcma-hero-banner {
+  position: relative;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.dcma-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(11, 34, 57, 0.95) 0%, rgba(16, 47, 83, 0.88) 50%, rgba(11, 34, 57, 0.75) 100%);
+  z-index: 1;
+}
+
+.dcma-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Headings */
+.dcma-section-title {
+  color: var(--primary-navy);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.dcma-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--saffron);
+}
+
+.dcma-section-title-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* News Cards */
+.dcma-news-card {
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dcma-news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(11, 34, 57, 0.12);
+  border-color: #CBD5E1;
+}
+
+.dcma-news-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  background-color: #0B2239;
+}
+
+.dcma-news-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.dcma-news-card:hover .dcma-news-img-wrap img {
+  transform: scale(1.04);
+}
+
+.dcma-news-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(11, 34, 57, 0.9);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border-left: 3px solid var(--saffron);
+  text-transform: uppercase;
+}
+
+/* Image Gallery & Lightbox */
+.dcma-gallery-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #0B2239;
+  height: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.dcma-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.dcma-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.dcma-gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(11, 34, 57, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.dcma-gallery-item:hover .dcma-gallery-overlay {
+  opacity: 1;
+}
+
+.dcma-lightbox-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 34, 57, 0.94);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.dcma-lightbox-modal {
+  max-width: 900px;
+  width: 100%;
+  background: #0B2239;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+/* Footer (DCMA Architecture) */
+.dcma-footer {
+  background-color: var(--deep-navy);
+  color: #94A3B8;
+  border-top: 3px solid var(--saffron);
+}
+
+.dcma-footer a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dcma-footer a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Existing Dashboard & Utility Classes */
 .sidebar {
   width: 260px;
   min-height: 100vh;
@@ -58,7 +441,6 @@ body {
   border-left-color: var(--saffron);
 }
 
-/* Topbar */
 .topbar {
   height: 60px;
   background-color: var(--navy);
@@ -130,29 +512,33 @@ body {
 }
 
 .stat-card.steel {
-  border-left-color: var(--steel-blue);
+  border-left-color: var(--secondary-navy);
 }
 
 /* Module Cards */
 .module-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 28px 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  transition: all 0.2s ease;
-  border-top: 4px solid var(--navy);
+  transition: all 0.25s ease;
+  border-top: 4px solid var(--primary-navy);
+  border-left: 1px solid #E2E8F0;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
   height: 100%;
 }
 
 .module-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 24px rgba(11, 34, 57, 0.12);
+  border-top-color: var(--saffron);
 }
 
 /* Priority & Status */
 .priority-urgent { color: var(--red); font-weight: 700; }
 .priority-high { color: var(--saffron); font-weight: 600; }
-.priority-medium { color: var(--steel-blue); }
+.priority-medium { color: var(--secondary-navy); }
 .priority-low { color: var(--text-muted); }
 
 /* Buttons */
@@ -160,19 +546,21 @@ body {
   background-color: var(--saffron);
   color: #fff;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
 }
 
 .btn-saffron:hover {
-  background-color: #d17b1d;
+  background-color: #E68A00;
   color: #fff;
 }
 
 .btn-navy {
-  background-color: var(--navy);
+  background-color: var(--primary-navy);
   color: #fff;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
 }
 
 .btn-navy:hover {

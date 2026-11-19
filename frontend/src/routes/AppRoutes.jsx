@@ -38,6 +38,7 @@ import VendorCreatePage from '../pages/vendors/VendorCreatePage.jsx'
 import VendorDetailPage from '../pages/vendors/VendorDetailPage.jsx'
 import VendorEditPage from '../pages/vendors/VendorEditPage.jsx'
 import VendorEvaluationPage from '../pages/vendors/VendorEvaluationPage.jsx'
+import VendorComparePage from '../pages/vendors/VendorComparePage.jsx'
 
 // Finance
 import InvoiceListPage from '../pages/finance/InvoiceListPage.jsx'
@@ -77,6 +78,7 @@ export default function AppRoutes() {
           <Route path="/app/procurement/requisitions" element={<RequisitionListPage />} />
           <Route path="/app/procurement/requisitions/:id" element={<RequisitionDetailPage />} />
           <Route path="/app/vendors" element={<VendorListPage />} />
+          <Route path="/app/vendors/compare" element={<VendorComparePage />} />
           <Route path="/app/vendors/:id" element={<VendorDetailPage />} />
           <Route path="/app/finance/invoices" element={<InvoiceListPage />} />
           <Route path="/app/finance/invoices/:id" element={<InvoiceDetailPage />} />
