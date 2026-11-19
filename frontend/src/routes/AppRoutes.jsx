@@ -6,6 +6,8 @@ import ProtectedRoute from './ProtectedRoute.jsx'
 // Public pages
 import LandingPage from '../pages/public/LandingPage.jsx'
 import AboutPage from '../pages/public/AboutPage.jsx'
+import ModulesPage from '../pages/public/ModulesPage.jsx'
+import AnnouncementsPage from '../pages/public/AnnouncementsPage.jsx'
 import ContactPage from '../pages/public/ContactPage.jsx'
 
 // Auth
@@ -57,6 +59,8 @@ export default function AppRoutes() {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/modules" element={<ModulesPage />} />
+        <Route path="/announcements" element={<AnnouncementsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Route>

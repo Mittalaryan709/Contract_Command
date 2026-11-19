@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" fill="none">
+  <rect width="400" height="260" rx="12" fill="#0B1F33"/>
+  <defs>
+    <linearGradient id="navyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2A47"/>
+      <stop offset="100%" stop-color="#1B3A5B"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="380" height="240" rx="8" fill="url(#navyBg)" stroke="#334E68" stroke-width="1.5"/>
+  <!-- Radar Wave Pattern -->
+  <circle cx="200" cy="140" r="40" stroke="#334E68" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+  <circle cx="200" cy="140" r="75" stroke="#334E68" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+  <circle cx="200" cy="140" r="110" stroke="#334E68" stroke-width="1" stroke-dasharray="4 4" opacity="0.2"/>
+  <!-- Warship Silhouette -->
+  <g transform="translate(65, 105)" fill="#FFFFFF" opacity="0.95">
+    <!-- Hull -->
+    <polygon points="10,60 50,60 220,60 260,35 240,60 20,60" fill="#E58A24"/>
+    <polygon points="20,60 240,60 220,75 50,75" fill="#334E68"/>
+    <!-- Superstructure -->
+    <rect x="70" y="35" width="90" height="25" fill="#FFFFFF"/>
+    <rect x="100" y="15" width="40" height="20" fill="#FFFFFF"/>
+    <!-- Radar Mast -->
+    <line x1="120" y1="15" x2="120" y2="0" stroke="#E58A24" stroke-width="3"/>
+    <line x1="110" y1="5" x2="130" y2="5" stroke="#E58A24" stroke-width="2"/>
+    <!-- Deck Gun -->
+    <polygon points="190,50 205,50 200,42" fill="#FFFFFF"/>
+    <line x1="205" y1="46" x2="225" y2="40" stroke="#FFFFFF" stroke-width="2.5"/>
+  </g>
+  <text x="30" y="45" font-family="'Inter', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF" letter-spacing="1">MARITIME & NAVAL SYSTEMS</text>
+  <text x="30" y="228" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#9FB3C8">Surface Combatants, Stealth Frigates & Subsea Tech</text>
+  <rect x="330" y="25" width="40" height="20" rx="4" fill="#1E5C99"/>
+  <text x="338" y="39" font-family="'Inter', sans-serif" font-weight="700" font-size="10" fill="#FFFFFF">NAVY</text>
+</svg>

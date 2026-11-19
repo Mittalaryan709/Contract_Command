@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" fill="none">
+  <rect width="400" height="260" rx="12" fill="#0B1F33"/>
+  <defs>
+    <linearGradient id="innovBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2840"/>
+      <stop offset="100%" stop-color="#244B70"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="380" height="240" rx="8" fill="url(#innovBg)" stroke="#334E68" stroke-width="1.5"/>
+  <!-- Innovation Neural/Satellite Geometry -->
+  <g transform="translate(130, 60)">
+    <circle cx="70" cy="70" r="45" fill="none" stroke="#287A4B" stroke-width="2" opacity="0.6"/>
+    <!-- Central Node -->
+    <circle cx="70" cy="70" r="14" fill="#E58A24"/>
+    <!-- Outer Satellite Nodes -->
+    <circle cx="25" cy="70" r="8" fill="#FFFFFF"/>
+    <circle cx="115" cy="70" r="8" fill="#FFFFFF"/>
+    <circle cx="70" cy="25" r="8" fill="#FFFFFF"/>
+    <circle cx="70" cy="115" r="8" fill="#FFFFFF"/>
+    <line x1="25" y1="70" x2="115" y2="70" stroke="#FFFFFF" stroke-width="1.5"/>
+    <line x1="70" y1="25" x2="70" y2="115" stroke="#FFFFFF" stroke-width="1.5"/>
+    <path d="M38 38 L102 102 M102 38 L38 102" stroke="#E58A24" stroke-width="1.2" stroke-dasharray="3 3"/>
+  </g>
+  <text x="30" y="45" font-family="'Inter', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF" letter-spacing="1">INDIGENOUS R&amp;D &amp; iDEX</text>
+  <text x="30" y="228" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#9FB3C8">Startups, Deep Tech, Positive Indigenisation Lists</text>
+  <rect x="290" y="25" width="80" height="20" rx="4" fill="#E58A24"/>
+  <text x="297" y="39" font-family="'Inter', sans-serif" font-weight="700" font-size="10" fill="#FFFFFF">INNOVATION</text>
+</svg>

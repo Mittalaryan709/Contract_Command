@@ -1,50 +1,188 @@
+import { Link } from 'react-router-dom'
+
 export default function AboutPage() {
   return (
     <div>
-      <div style={{ background: 'linear-gradient(135deg,#0B1F33,#102A43)', color:'#fff', padding:'60px 0' }}>
-        <div className="container">
-          <h1 style={{fontWeight:800}}>About ContractCommand</h1>
-          <p style={{color:'rgba(255,255,255,.75)'}}>P07 – HCLTech Career Shaper | MCA 2nd Year | ABES Engineering College</p>
+      {/* Header Banner */}
+      <section className="py-5 text-white" style={{ backgroundColor: '#102A43', borderBottom: '3px solid #E58A24' }}>
+        <div className="container py-3">
+          <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2" style={{ backgroundColor: 'rgba(229, 138, 36, 0.2)', border: '1px solid #E58A24' }}>
+            <span className="small text-warning fw-semibold">Academic Companion Project P07</span>
+          </div>
+          <h1 className="display-5 fw-bold text-white mb-2">About ContractCommand</h1>
+          <p className="lead text-white-50 mb-0 fs-6">
+            Defence Contract and Procurement Management Platform &ndash; MCA 2nd Year Capstone Initiative.
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Main Content */}
       <div className="container py-5">
         <div className="row g-5">
+          {/* Left Column: Problem & Objectives */}
           <div className="col-lg-7">
-            <h3 style={{color:'#102A43',fontWeight:700}}>Project Overview</h3>
-            <p style={{color:'#627D98',lineHeight:1.8}}>ContractCommand is a comprehensive Defence Contract and Procurement Management Platform developed as the P07 project for the HCLTech Career Shaper programme by MCA 2nd Year students at ABES Engineering College. The platform addresses the complex challenges of managing defence contracts, procurement plans, vendor relationships and financial tracking in the aerospace and defence domain.</p>
-            <h4 className="mt-4" style={{color:'#102A43',fontWeight:700}}>Mission</h4>
-            <p style={{color:'#627D98',lineHeight:1.8}}>To provide a transparent, accountable and secure digital platform for defence procurement stakeholders, enabling efficient contract lifecycle management while maintaining compliance with India's Defence Acquisition Procedure 2020.</p>
-            <h4 className="mt-4" style={{color:'#102A43',fontWeight:700}}>Academic Context</h4>
-            <div style={{background:'#F3F6F9',borderRadius:'12px',padding:'20px'}}>
-              {[['Institution','ABES Engineering College'],['Programme','MCA (Master of Computer Applications)'],['Year','2nd Year'],['Project Code','P07 — ContractCommand'],['Industry Partner','HCLTech Career Shaper'],['Domain','Aerospace & Defence']].map(([k,v])=>(
-                <div key={k} className="d-flex gap-3 mb-2">
-                  <span style={{minWidth:140,color:'#334E68',fontWeight:600,fontSize:'.9rem'}}>{k}</span>
-                  <span style={{color:'#102A43',fontSize:'.9rem'}}>{v}</span>
+            <h3 className="fw-bold mb-3" style={{ color: '#102A43' }}>Executive Overview</h3>
+            <p className="text-muted lh-base">
+              <strong>ContractCommand</strong> is a modern, enterprise-grade software platform designed to manage the lifecycle of defence procurement, vendor relations, and contract financial operations. Built in response to the growing operational complexities in aerospace and defence logistics, the system streamlines acquisition workflows while maintaining statutory compliance.
+            </p>
+            <div className="mb-4">
+              <Link to="/modules" className="btn btn-sm btn-outline-dark px-3 py-2 d-inline-flex align-items-center gap-2">
+                <i className="bi bi-grid-3x3-gap-fill text-warning"></i>
+                <span>Explore the 4 Platform Modules &rarr;</span>
+              </Link>
+            </div>
+
+            <div className="p-4 rounded-3 mb-4" style={{ backgroundColor: '#F3F6F9', borderLeft: '4px solid #102A43' }}>
+              <h5 className="fw-bold mb-2" style={{ color: '#102A43' }}>The Problem Statement</h5>
+              <p className="text-muted small mb-0 lh-base">
+                Legacy defence procurement operations often suffer from fragmented record-keeping across multiple disconnected tools, lack of centralized audit trails, manual vendor score calculations, and delays in multi-tier requisition approvals. ContractCommand addresses these challenges by consolidating contract records, requisition approvals, supplier evaluations, and GST payment tracking into a single unified platform.
+              </p>
+            </div>
+
+            <h4 className="fw-bold mb-3" style={{ color: '#102A43' }}>Project Objectives</h4>
+            <div className="row g-3 mb-4">
+              <div className="col-sm-6">
+                <div className="p-3 border rounded-3 h-100 bg-white shadow-sm">
+                  <i className="bi bi-shield-check text-warning fs-4 mb-2 d-block"></i>
+                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Auditable Governance</h6>
+                  <p className="small text-muted mb-0">Ensure full traceability of every contract amendment, document upload, and requisition approval state.</p>
                 </div>
-              ))}
+              </div>
+              <div className="col-sm-6">
+                <div className="p-3 border rounded-3 h-100 bg-white shadow-sm">
+                  <i className="bi bi-calculator text-success fs-4 mb-2 d-block"></i>
+                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Deterministic Finance</h6>
+                  <p className="small text-muted mb-0">Automate 18% GST line-item totals, balance reconciliations, and NEFT/RTGS transaction settlement tracking.</p>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div className="p-3 border rounded-3 h-100 bg-white shadow-sm">
+                  <i className="bi bi-star-half text-info fs-4 mb-2 d-block"></i>
+                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Pillar-Based Scoring</h6>
+                  <p className="small text-muted mb-0">Evaluate vendors across Quality, Delivery, Pricing, and Compliance on an objective 0&ndash;10 scale.</p>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div className="p-3 border rounded-3 h-100 bg-white shadow-sm">
+                  <i className="bi bi-lock-fill text-danger fs-4 mb-2 d-block"></i>
+                  <h6 className="fw-bold" style={{ color: '#102A43' }}>Role-Based Access Control</h6>
+                  <p className="small text-muted mb-0">Server-enforced Django permissions differentiating Administrators, Contracts Managers, and Safety Officers.</p>
+                </div>
+              </div>
+            </div>
+
+            <h4 className="fw-bold mb-3" style={{ color: '#102A43' }}>Intended User Roles</h4>
+            <div className="table-responsive">
+              <table className="table table-bordered align-middle small">
+                <thead style={{ backgroundColor: '#F3F6F9' }}>
+                  <tr>
+                    <th style={{ color: '#102A43' }}>Role</th>
+                    <th style={{ color: '#102A43' }}>Primary Responsibilities</th>
+                    <th style={{ color: '#102A43' }}>System Permissions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="fw-bold text-nowrap"><span className="badge bg-warning text-dark">Administrator</span></td>
+                    <td>Complete platform governance, system configuration, master data oversight, and audit control.</td>
+                    <td>Full CRUD permissions across all models, permanent delete authority.</td>
+                  </tr>
+                  <tr>
+                    <td className="fw-bold text-nowrap"><span className="badge bg-info text-dark">Contracts Manager</span></td>
+                    <td>Contract lifecycle management, procurement planning, vendor evaluation, and requisition approvals.</td>
+                    <td>Create, view, and update records; approve/reject requisitions (no deletion).</td>
+                  </tr>
+                  <tr>
+                    <td className="fw-bold text-nowrap"><span className="badge bg-success">Safety Officer</span></td>
+                    <td>Technical equipment compliance, hazardous materials safety audit, and contract review.</td>
+                    <td>Read-only access across all business modules to preserve audit integrity.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+
+          {/* Right Column: Tech Stack & Academic Identity */}
           <div className="col-lg-5">
-            <h4 style={{color:'#102A43',fontWeight:700}}>Technology Stack</h4>
-            <div className="d-flex flex-column gap-3">
-              {[
-                {layer:'Frontend',tech:'React 18 + Vite',color:'#61DAFB',bg:'#0B1F33'},
-                {layer:'UI Framework',tech:'Bootstrap 5 + Bootstrap Icons',color:'#7952B3',bg:'#F8F5FF'},
-                {layer:'State & Auth',tech:'Context API + JWT',color:'#E58A24',bg:'#FFF8F0'},
-                {layer:'HTTP Client',tech:'Axios with interceptors',color:'#5A29E4',bg:'#F5F0FF'},
-                {layer:'Charts',tech:'Chart.js + react-chartjs-2',color:'#FF6384',bg:'#FFF5F7'},
-                {layer:'Backend',tech:'Django 4.2 LTS + DRF 3.14',color:'#092E20',bg:'#E8F5E9'},
-                {layer:'Database',tech:'SQLite (dev) / MySQL 8.0',color:'#4479A1',bg:'#EEF7FF'},
-                {layer:'Auth Protocol',tech:'JWT (SimpleJWT, 8h tokens)',color:'#102A43',bg:'#F3F6F9'},
-              ].map(t=>(
-                <div key={t.layer} style={{background:t.bg,borderRadius:'8px',padding:'12px 16px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                  <span style={{fontSize:'.82rem',color:'#627D98'}}>{t.layer}</span>
-                  <span style={{fontWeight:700,fontSize:'.85rem',color:t.color}}>{t.tech}</span>
+            {/* Academic Details Card */}
+            <div className="card border-0 shadow-sm mb-4" style={{ backgroundColor: '#0B1F33', color: '#fff' }}>
+              <div className="card-body p-4">
+                <div className="d-flex align-items-center gap-2 mb-3">
+                  <i className="bi bi-mortarboard-fill text-warning fs-3"></i>
+                  <div>
+                    <h5 className="fw-bold mb-0 text-white">Academic Details</h5>
+                    <small className="text-white-50">HCLTech Career Shaper Companion Project</small>
+                  </div>
                 </div>
-              ))}
+                <ul className="list-unstyled small d-flex flex-column gap-2 mb-0 border-top border-secondary pt-3">
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Project ID:</span><span className="fw-bold text-white">P07 &ndash; ContractCommand</span></li>
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Degree:</span><span className="fw-bold text-white">Master of Computer Applications (MCA)</span></li>
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Year / Semester:</span><span className="fw-bold text-white">2nd Year / 4th Semester</span></li>
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Institution:</span><span className="fw-bold text-white">ABES Engineering College</span></li>
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Corporate Partner:</span><span className="fw-bold text-warning">HCLTech</span></li>
+                  <li className="d-flex justify-content-between"><span className="text-white-50">Domain:</span><span className="fw-bold text-white">Aerospace &amp; Defence Procurement</span></li>
+                </ul>
+              </div>
             </div>
-            <div className="mt-4 p-3" style={{background:'#FFF8F0',border:'1px solid #E58A24',borderRadius:'10px'}}>
-              <small style={{color:'#834d00'}}><strong>⚠️ Disclaimer:</strong> ContractCommand is an academic project. It is not affiliated with the Ministry of Defence, Government of India, or any official government procurement system. All data used is synthetic and for demonstration purposes only.</small>
+
+            {/* Architecture Card */}
+            <div className="card border-0 shadow-sm mb-4">
+              <div className="card-header bg-white py-3">
+                <h6 className="fw-bold mb-0" style={{ color: '#102A43' }}>Enterprise Technology Stack</h6>
+              </div>
+              <div className="card-body p-3">
+                <div className="d-flex flex-column gap-3 small">
+                  <div className="p-2 rounded bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <div className="fw-bold" style={{ color: '#102A43' }}>Frontend Client</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>React 18, Vite 6, Bootstrap 5, React Router v7</div>
+                    </div>
+                    <span className="badge bg-primary">SPA</span>
+                  </div>
+
+                  <div className="p-2 rounded bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <div className="fw-bold" style={{ color: '#102A43' }}>Backend Service</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>Django 4.2 LTS, Django REST Framework 3.14</div>
+                    </div>
+                    <span className="badge bg-success">REST API</span>
+                  </div>
+
+                  <div className="p-2 rounded bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <div className="fw-bold" style={{ color: '#102A43' }}>Authentication</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>SimpleJWT, 8-hour access, token rotation &amp; blacklist</div>
+                    </div>
+                    <span className="badge bg-warning text-dark">JWT</span>
+                  </div>
+
+                  <div className="p-2 rounded bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <div className="fw-bold" style={{ color: '#102A43' }}>Persistence &amp; DDL</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>MySQL 8.0 (3NF Schema) &amp; SQLite Dual-Engine</div>
+                    </div>
+                    <span className="badge bg-dark">SQL</span>
+                  </div>
+
+                  <div className="p-2 rounded bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                      <div className="fw-bold" style={{ color: '#102A43' }}>Testing Suite</div>
+                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>Pytest (28/28 tests) &amp; Vitest (13/13 tests)</div>
+                    </div>
+                    <span className="badge bg-info text-dark">100% Pass</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Statutory Disclaimer */}
+            <div className="p-3 rounded-3" style={{ backgroundColor: '#FFF8F0', border: '1px solid #E58A24' }}>
+              <div className="d-flex gap-2">
+                <i className="bi bi-info-circle-fill text-warning fs-5"></i>
+                <div className="small text-dark">
+                  <strong>Academic Prototype Notice:</strong> ContractCommand is developed strictly for educational evaluation and project demonstration purposes. It does not interface with actual military communication channels or live government transaction gateways.
+                </div>
+              </div>
             </div>
           </div>
         </div>
