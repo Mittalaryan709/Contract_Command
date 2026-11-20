@@ -170,13 +170,43 @@ SIMPLE_JWT = {
     'USER_ID_CLAIM': 'user_id',
 }
 
-# ── CORS – Future React Frontend ───────────────────────────────────────────────
-CORS_ALLOWED_ORIGINS = config(
+# ── CORS & CSRF Configuration ──────────────────────────────────────────────────
+_configured_cors = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://127.0.0.1:3000',
+    default='http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173',
     cast=Csv(),
 )
+_default_production_cors = [
+    'https://contract-command-defence.vercel.app',
+    'https://contract-command-indol.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
+CORS_ALLOWED_ORIGINS = sorted(list(set(list(_configured_cors) + _default_production_cors)))
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https:\/\/.*\.vercel\.app$",
+]
 CORS_ALLOW_CREDENTIALS = True
+
+_configured_csrf = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default='',
+    cast=Csv(),
+)
+_default_trusted_csrf = [
+    'https://contract-command-defence.vercel.app',
+    'https://contract-command-indol.vercel.app',
+    'https://*.onrender.com',
+    'https://*.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
+CSRF_TRUSTED_ORIGINS = sorted(list(set([x for x in list(_configured_csrf) if x] + _default_trusted_csrf)))
 
 # ── DRF-Spectacular (OpenAPI / Swagger) ────────────────────────────────────────
 SPECTACULAR_SETTINGS = {

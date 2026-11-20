@@ -4,7 +4,8 @@ import fs from 'fs'
 console.log('Building frontend Vite bundle...')
 execSync('npm --prefix frontend run build', { stdio: 'inherit' })
 
-console.log('Copying frontend/dist to dist...')
+console.log('Cleaning and copying frontend/dist to dist...')
+fs.rmSync('dist', { recursive: true, force: true })
 fs.cpSync('frontend/dist', 'dist', { recursive: true })
 
 console.log('Build complete!')

@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000'
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? 'http://127.0.0.1:8000' : 'https://contractcommand-backend.onrender.com')
+const BASE_URL = rawBaseUrl.replace(/\/+$/, '')
 
 const api = axios.create({
   baseURL: BASE_URL,
+  timeout: 45000,
   headers: { 'Content-Type': 'application/json' },
 })
 
